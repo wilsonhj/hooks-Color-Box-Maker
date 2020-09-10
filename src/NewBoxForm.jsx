@@ -1,17 +1,18 @@
-import React, {useState} from 'react';
+import React from 'react';
+import useInputState from './hooks/useInputState';
 
 const NewBoxForm = (props) => {
-  const [height, setHeight] = useState('');
-  const [width, setWidth] = useState('');
-  const [color, setColor] = useState('');
+  const [value, handleChange] = useInputState('');
+  // const [width, setWidth] = useState('');
+  // const [color, setColor] = useState('');
   return ( 
     <form>
       <div>
-        <label></label>
-        <input type="text"/>
+        <label htmlFor='height' ></label>
+        <input type="text" name='height' value={value} id='height' onChange={handleChange}/>
       </div>
     </form>
-   );
+  );
 }
 
 export default NewBoxForm;
