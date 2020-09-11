@@ -9,7 +9,7 @@ const Box = (props) => {
         backgroundColor: props.color
         }}>
       </div>
-      <button>todo</button>
+      {/* <button>todo</button> */}
     </div>
   )
 }
