@@ -4,12 +4,22 @@ import NewBoxForm from './NewBoxForm';
 import { v4 as uuidv4 } from 'uuid';
 
 const BoxList = (props) => {
-  const [boxes, setBoxes] = useState( [{ id: uuidv4(), width: 10, height: 10, color: 'orange' }] );
+  const [boxes, setBoxes] = useState([]);
   const createBox = (newBox) => {
     setBoxes( [...boxes, newBox] );
   };
-  const updatedBoxes = boxes.map(box => ( // todo: boxes.map is not a function?
-    <Box key={box.id} width={box.width} height={box.height} color={box.color} />
+  const removeBox = id => {
+    setBoxes( boxes.filter(box => box.id !== id) );
+  };
+  const updatedBoxes = boxes.map(box => (
+    <Box 
+      key={box.id} 
+      id={box.id}
+      width={box.width} 
+      height={box.height} 
+      color={box.color}
+      removeBox={() => removeBox(box.id)}
+    />
   ));
 
   return (

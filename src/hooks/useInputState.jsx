@@ -8,6 +8,6 @@ export default initialVal => {
       [e.target.name]: e.target.value
     });
   };
-  const reset = () => setValue({height: '', width: '', color: ''});
+  const reset = () => setValue({height: '', width: '', color: '', id:''});
   return [value, handleChange, reset];
 };

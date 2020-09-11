@@ -1,5 +1,6 @@
 import React from 'react';
 import useInputState from './hooks/useInputState';
+import { v4 as uuidv4 } from 'uuid';
 
 const NewBoxForm = (props) => {
   const [value, handleChange, reset] = useInputState({ height: '', width: '', color: '' });
@@ -7,7 +8,8 @@ const NewBoxForm = (props) => {
   // const [color, setColor] = useState('');
   const handleSubmit = e => {
     e.preventDefault();
-    props.createBox(value); // todo : pass state object: {width: 100, height: 50, color: 'pink' } // how?
+    const newBox = {...value, id: uuidv4()};
+    props.createBox(newBox); // todo : pass state object: {width: 100, height: 50, color: 'pink' } // how?
     reset();
   };
   return ( 
